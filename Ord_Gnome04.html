@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento Gnome</title>
+    <script text="text/javascript">
+        function Gnome(Arreglo)
+        {
+            function moveratras(i)
+            {
+                for(; i > 0 && Arreglo[i - 1] > Arreglo[i]; --i)
+                {
+                    [Arreglo[i], Arreglo[i - 1]] = [Arreglo[i - 1], Arreglo[i]];
+                }
+            }   
+            for(let i = 1; i <  Arreglo.length; i++)
+            {
+                if(Arreglo[i - 1] > Arreglo[i])
+                {
+                    moveratras(i);
+                }
+            }               
+            document.getElementById("lblResultado").innerHTML="Arreglo ordenado: " + Arreglo;
+        }
+        let Vector = [8, 7, 9, 15, 10, 1, 2, 3, 5, 6, 11];
+        document.write("El arreglo es: " + "[" + Vector + "]" + "<br>");
+    </script>
+</head>
+<body>
+    <h1>Ordenamiento Gnome</h1>
+    <p>
+        <button type="button" onclick="Gnome(Vector)">Ordenar</button>
+    </p>
+    <p id="lblResultado"></p>
+</body>
+</html>
