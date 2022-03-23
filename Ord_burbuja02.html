@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento Burbuja</title>
+    <script text="text/javascript">
+        function Burbuja(Arreglo)
+        {
+            let n = Arreglo.length;
+            let intercambiar;
+            do
+            {
+                intercambiar = false;
+
+                for(let i = 0; i < n; i++)
+                {
+                    if(Arreglo[i] > Arreglo[i + 1])
+                    {
+                        let temp = Arreglo[i];
+                        Arreglo[i] = Arreglo[i + 1];
+                        Arreglo[i + 1] = temp;
+
+                        intercambiar = true;
+                    }
+                }
+            }while (intercambiar);
+            document.getElementById("lblResultado").innerHTML="Arreglo ordenado: " + Arreglo;
+        }
+        let Vector = [8, 7, 9, 15, 10, 1, 2, 3, 5, 6, 11];
+        document.write("El arreglo es: " + "[" + Vector + "]" + "<br>"); 
+    </script>
+</head>
+<body>
+    <h1>Ordenamiento de Burbuja</h1>
+    <p>
+        <button type="button" onclick="Burbuja(Vector)">Ordenar</button>
+    </p>
+    <p id="lblResultado"></p>
+</body>
+</html>

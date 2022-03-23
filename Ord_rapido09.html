@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento Rapido</title>
+    <script text="text/javascript">
+        function rapido(Arreglo)
+        {
+            let izquierdo = [];
+            let derecha = [];
+            let auxiliar = [];
+            let pivote = Arreglo.pop();
+            let n = Arreglo.length;
+
+            if(Arreglo.length <= 1)
+            {
+                return Arreglo;
+            }
+
+            for(let i = 0; i < n; i++)
+            {
+                if(Arreglo[i] <= pivote)
+                {
+                    izquierdo.push(Arreglo[i]);
+                }
+                else
+                {
+                    derecha.push(Arreglo[i]);
+                }
+            }
+            return auxiliar.concat(rapido(izquierdo),pivote,rapido(derecha)); 
+        }
+
+        let Vector = [8, 7, 9, 15, 10, 1, 2, 3, 5, 6, 11];
+        document.write("El arreglo es: " + "[" + Vector + "]" + "<br>");
+        function Escribir()
+            {
+                document.getElementById("lblResultado").innerHTML="Arreglo ordenado: " + rapido(Vector);
+            }
+    </script>
+</head>
+<body>
+    <h1>Ordenamiento Rápido</h1>
+    <p>
+        <button type="button" onclick="Escribir(Vector)">Ordenar</button>
+    </p>
+    <p id="lblResultado"></p>
+</body>
+</html>

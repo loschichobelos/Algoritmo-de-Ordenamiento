@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento Seleccion</title>
+    <script text="text/javascript">
+          function shellSort(Arreglo)
+        {
+            var increment = Arreglo.length / 2;
+            var cont = 1;
+
+            while (increment > 0) 
+            {
+                for (i = increment; i < Arreglo.length; i++) 
+                {
+                    var j = i;
+                    cont++;                     
+                    var temp = Arreglo[i];
+                    cont++;
+
+                    while (j >= increment && Arreglo[j-increment] > temp) 
+                    {
+                        Arreglo[j] = Arreglo[j-increment];
+                        cont++;
+                        j = j - increment;
+                        cont++;
+                    }
+            
+                    Arreglo[j] = temp;
+                    cont++;
+                }
+            
+                if (increment == 2) 
+                {
+                    increment = 1;
+                    cont++;
+                } 
+
+                else 
+                {
+                    increment = parseInt(increment*5 / 11);
+                    cont++;
+                }
+            }
+            document.getElementById("lblResultado").innerHTML="Arreglo ordenado: " + Arreglo;
+        }
+        let Vector = [8, 7, 9, 15, 10, 1, 2, 3, 5, 6, 11, 20, 16, 17, 13, 24];
+        document.write("El arreglo es: " + "[" + Vector + "]" + "<br>");   
+    </script>
+</head>
+<body>
+    <h1>Ordenamiento Shell</h1>
+    <p>
+        <button type="button" onclick="shellSort(Vector)">Ordenar</button>
+    </p>
+    <p id="lblResultado"></p>
+</body>
+</html>

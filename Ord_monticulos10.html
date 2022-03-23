@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento por monticulos</title>
+    <script text="text/javascript">
+        function montSort(array)
+        {
+            var n;
+            var cont = 0;
+            function heapsortAuxiliar(arreglo, i) 
+            {
+                let indiceIzquierda = 2 * i + 1;
+                cont++;
+                let indiceDerecha = 2 * i + 2;
+                cont++;
+
+                let maximo = i;
+                cont++;
+
+                if (indiceIzquierda < n && arreglo[indiceIzquierda] > arreglo[maximo]) 
+                {
+                    maximo = indiceIzquierda;
+                    cont++;
+                }
+
+                if (indiceDerecha < n && arreglo[indiceDerecha] > arreglo[maximo]) 
+                {
+                    maximo = indiceDerecha;
+                    cont++;
+                }
+
+                if (maximo != i) 
+                {
+                    [arreglo[maximo], arreglo[i]] = [arreglo[i], arreglo[maximo]];
+                    cont++;
+                    heapsortAuxiliar(arreglo, maximo);
+                    cont++;
+                }
+            }
+
+            function heapsort(datos) 
+            {
+                const auxiliar = [...datos];
+                cont++;
+                n = datos.length;
+                cont++;
+
+                for (let i = Math.floor(n / 2); i >= 0; --i) 
+                {
+                    heapsortAuxiliar(auxiliar, i);
+                    cont++;
+                }
+
+                for (let i = auxiliar.length - 1; i > 0; --i) 
+                {
+                    [auxiliar[0], auxiliar[i]] = [auxiliar[i], auxiliar[0]];
+                    cont++;
+                    --n;
+                    cont++;
+                    heapsortAuxiliar(auxiliar, 0);
+                    cont++;
+                }
+                return auxiliar;
+            }
+            document.getElementById("lblResultado").innerHTML="Ordenamiento por Monticulos" + "<br>" + (heapsort(array));
+        }
+        let Vector = [8, 7, 9, 15, 10, 1, 2, 3, 5, 6, 11];
+        document.write("El arreglo es: " + "[" + Vector + "]" + "<br>");
+    </script>
+</head>
+<body>
+    <h1>Ordenamiento por Monticulos</h1>
+    <p>
+        <button type="button" onclick="montSort(Vector)">Ordenar</button>
+    </p>
+    <p id="lblResultado"></p>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento Burbuja Bidireccional</title>
+    <script text="text/javascript">
+        function BurbujaBi(Arreglo)
+        {
+            let ordenado = true;
+
+            while(ordenado)
+            {
+                for(let i = 0; i < Arreglo.length - 1; i++)
+                {
+                    if (Arreglo[i] > Arreglo[i + 1])
+                    {
+                        [Arreglo[i], Arreglo[i + 1]] = [Arreglo[i + 1], Arreglo[i]];
+                        ordenado = true;
+                    }
+                }
+                if (!ordenado)
+                {
+                    break;
+                }
+                ordenado = false;
+
+                for (let j = Arreglo.length - 1; j > 0; --j)
+                {
+                    if (Arreglo[j - 1] > Arreglo[j])
+                    {
+                        [Arreglo[j], Arreglo[j - 1]] = [Arreglo[j - 1], Arreglo[j]];
+                        ordenado = true;
+                    }
+                }
+            }
+            document.getElementById("lblResultado").innerHTML = "Arreglo ordenado: " + Arreglo;
+        }
+        let Vector = [8, 7, 9, 15, 10, 1, 2, 3, 5, 6, 11];
+        document.write("El arreglo es: " + "[" + Vector + "]" + "<br>");
+    </script>
+</head>
+<body>
+    <h1>Ordenamiento de Burbuja Bidireccional</h1>
+    <p>
+        <button type="button" onclick="BurbujaBi(Vector)">Ordenar</button>
+    </p>
+    <p id="lblResultado"></p>
+</body>
+</html>

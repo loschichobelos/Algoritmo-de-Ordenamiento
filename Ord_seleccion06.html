@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ordenamiento Seleccion</title>
+    <script text="text/javascript">
+        function selectionSort(Arreglo) 
+        { 
+            let n = Arreglo.length;
+            var cont = 1;
+
+            for(let i = 0; i < n; i++) 
+            {
+                let min = i;
+                cont = cont+1;
+
+                for(let j = i+1; j < n; j++)
+                {
+                    if(Arreglo[j] < Arreglo[min]) 
+                    {
+                    min=j;
+                    cont = cont+1;
+                    }
+                }
+                
+                if (min != i) 
+                {
+                let tmp = Arreglo[i];
+                cont = cont+1;
+                Arreglo[i] = Arreglo[min];
+                cont = cont+1;
+                Arreglo[min] = tmp;
+                cont = cont+1;      
+                }
+            }
+            document.getElementById("lblResultado").innerHTML="Arreglo ordenado: " + Arreglo;
+        }
+        let Vector = [8, 7, 9, 15, 10, 1, 2, 3, 5, 6, 11];
+        document.write("El arreglo es: " + "[" + Vector + "]" + "<br>");   
+    </script>
+</head>
+<body>
+    <h1>Ordenamiento por selección</h1>
+    <p>
+        <button type="button" onclick="selectionSort(Vector)">Ordenar</button>
+    </p>
+    <p id="lblResultado"></p>
+</body>
+</html>
